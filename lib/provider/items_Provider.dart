@@ -28,5 +28,6 @@ class ItemProvider with ChangeNotifier {
   postData(String taskname, DateTime date) {
     _items.add(Item(id: 4, title: taskname, added: date));
     notifyListeners();
+    print(_items);
   }
 }
