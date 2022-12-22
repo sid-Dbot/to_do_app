@@ -17,10 +17,10 @@ class ListItem extends StatelessWidget {
         decoration: BoxDecoration(
           color: Colors.limeAccent[700],
           borderRadius: BorderRadius.circular(13),
-          boxShadow: [
+          boxShadow: const [
             BoxShadow(
               color: Colors.black,
-              offset: const Offset(
+              offset: Offset(
                 2.0,
                 4.0,
               ), //Offset
@@ -30,7 +30,7 @@ class ListItem extends StatelessWidget {
             //BoxShadow
           ],
         ),
-        padding: EdgeInsets.all(8),
+        padding: const EdgeInsets.all(8),
         child: ListTile(
           title: Text(
             item[count].title,

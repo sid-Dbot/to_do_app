@@ -29,7 +29,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
       ),
       Row(
         children: [
-          Text('Due date: '),
+          const Text('Due date: '),
           TextButton(
             child: Text(
               setDate == null
@@ -53,6 +53,5 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
         ],
       ),
     ]);
-    ;
   }
 }

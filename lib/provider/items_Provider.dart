@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import '../models/item.dart';
 
 class ItemProvider with ChangeNotifier {
-  List<Item> _items = [
+  final List<Item> _items = [
     Item(
       id: 1,
       title: 'Laundry',
