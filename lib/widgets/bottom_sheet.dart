@@ -16,7 +16,8 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
   TextEditingController? taskname;
   @override
   Widget build(BuildContext context) {
-    final post = Provider.of<ItemProvider>(context).postData(taskname);
+    final d = context.read<ItemProvider>().postData(
+        taskname.toString(), DateFormat.yMMMd().format(setDate!).toString());
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(11.0),
@@ -54,6 +55,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
                 firstDate: DateTime(2022),
                 lastDate: DateTime(2027),
               ).then((value) {
+                d;
                 setState(() {
                   setDate = value;
                 });
@@ -72,7 +74,6 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
             ),
           ),
           onPressed: () {
-            post;
             setState(() {});
           },
         ),

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 class Item {
   int id;
   String title;
-  DateTime added;
+  String added;
   //DateTime dueDate;
 
   Item({
