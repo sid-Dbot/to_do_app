@@ -41,9 +41,6 @@ class ListItem extends StatelessWidget {
           ),
           subtitle: Text(
             'Status',
-            style: GoogleFonts.farsan(
-              color: Colors.red,
-            ),
           ),
         ),
       ),

@@ -26,24 +26,28 @@ class MainApp extends StatelessWidget {
               accentColor: Colors.limeAccent[700],
             ),
             textTheme: TextTheme(
-                headline6: GoogleFonts.emilysCandy(
-                  fontSize: 27,
-                  fontStyle: FontStyle.italic,
-                  fontWeight: FontWeight.bold,
-                ),
-                bodyText2: GoogleFonts.emilysCandy(
-                  fontStyle: FontStyle.italic,
-                  fontSize: 20,
-                ),
-                subtitle1: GoogleFonts.federant(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                ),
-                subtitle2: GoogleFonts.federant(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 20,
-                  color: Colors.deepOrange,
-                ))),
+              button: GoogleFonts.federant(
+                fontStyle: FontStyle.italic,
+                fontSize: 20,
+              ),
+              headline6: GoogleFonts.emilysCandy(
+                fontSize: 27,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.bold,
+              ),
+              bodyText1: GoogleFonts.emilysCandy(
+                fontStyle: FontStyle.italic,
+                fontSize: 20,
+              ),
+              bodyText2: GoogleFonts.federant(
+                fontStyle: FontStyle.italic,
+                fontSize: 20,
+              ),
+              subtitle1: GoogleFonts.federant(
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),
+            )),
         darkTheme: ThemeData.dark(),
         home: HomePage(),
       ),

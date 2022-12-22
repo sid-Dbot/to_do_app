@@ -11,31 +11,37 @@ class BottomSheetContents extends StatefulWidget {
 
 class _BottomSheetContentsState extends State<BottomSheetContents> {
   DateTime? setDate;
+  TextEditingController? taskname;
   @override
   Widget build(BuildContext context) {
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(11.0),
         child: TextField(
+          controller: taskname,
           decoration: InputDecoration(
               labelText: 'Enter Task',
-              labelStyle:
-                  GoogleFonts.frijole(color: Colors.lightGreenAccent[700]),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(11),
-              ),
+              labelStyle: TextStyle(color: Colors.lightGreenAccent[700]),
+              enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(11),
+                  borderSide: BorderSide(
+                    color: Colors.lightGreenAccent.shade700,
+                  )),
               focusColor: Colors.blueGrey),
         ),
       ),
       Row(
         children: [
-          const Text('Due date: '),
+          Text(
+            'Due date: ',
+            style: TextStyle(color: Colors.lightGreenAccent[700]),
+          ),
           TextButton(
             child: Text(
               setDate == null
                   ? 'Date shows here.'
                   : DateFormat.yMMMd().format(setDate!),
-              style: GoogleFonts.frijole(color: Colors.lightGreenAccent[700]),
+              style: TextStyle(color: Colors.lightGreenAccent[700]),
             ),
             onPressed: () {
               showDatePicker(
@@ -56,7 +62,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
         child: OutlinedButton(
           child: Text(
             'Submit',
-            style: GoogleFonts.frijole(
+            style: TextStyle(
               color: Colors.lightGreenAccent[700],
               fontSize: 20,
             ),
