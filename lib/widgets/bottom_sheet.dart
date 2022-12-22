@@ -16,7 +16,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
   TextEditingController? taskname;
   @override
   Widget build(BuildContext context) {
-    final post = Provider.of<ItemProvider>(context).postData;
+    final post = Provider.of<ItemProvider>(context).postData(taskname);
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(11.0),
