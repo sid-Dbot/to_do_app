@@ -52,6 +52,12 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
           ),
         ],
       ),
+      Center(
+        child: TextButton(
+          child: Text('Submit'),
+          onPressed: () {},
+        ),
+      )
     ]);
   }
 }
