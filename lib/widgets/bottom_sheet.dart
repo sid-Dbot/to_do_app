@@ -21,6 +21,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
       Padding(
         padding: const EdgeInsets.all(11.0),
         child: TextField(
+          style: TextStyle(color: Colors.white),
           controller: taskname,
           decoration: InputDecoration(
               labelText: 'Enter Task',
