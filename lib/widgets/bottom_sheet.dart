@@ -72,6 +72,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
           ),
           onPressed: () {
             post;
+            setState(() {});
           },
         ),
       )
