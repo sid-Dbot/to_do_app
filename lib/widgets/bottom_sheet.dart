@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import 'package:to_do_app/provider/items_Provider.dart';
 
 class BottomSheetContents extends StatefulWidget {
   const BottomSheetContents({super.key});
@@ -14,6 +16,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
   TextEditingController? taskname;
   @override
   Widget build(BuildContext context) {
+    final post = Provider.of<ItemProvider>(context).postData;
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(11.0),
@@ -67,7 +70,9 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
               fontSize: 20,
             ),
           ),
-          onPressed: () {},
+          onPressed: () {
+            post;
+          },
         ),
       )
     ]);
