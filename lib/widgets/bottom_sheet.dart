@@ -56,7 +56,10 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
         child: OutlinedButton(
           child: Text(
             'Submit',
-            style: GoogleFonts.frijole(color: Colors.lightGreenAccent[700]),
+            style: GoogleFonts.frijole(
+              color: Colors.lightGreenAccent[700],
+              fontSize: 20,
+            ),
           ),
           onPressed: () {},
         ),
