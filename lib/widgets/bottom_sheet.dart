@@ -16,8 +16,7 @@ class _BottomSheetContentsState extends State<BottomSheetContents> {
   TextEditingController? taskname;
   @override
   Widget build(BuildContext context) {
-    final d = context.read<ItemProvider>().postData(
-        taskname.toString(), DateFormat.yMMMd().format(setDate!).toString());
+    final d = context.read<ItemProvider>().postData(taskname.toString());
     return Column(children: [
       Padding(
         padding: const EdgeInsets.all(11.0),
