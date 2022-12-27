@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:to_do_app/models/item.dart';
@@ -7,11 +8,12 @@ import 'package:to_do_app/provider/items_Provider.dart';
 
 class ListItem extends StatelessWidget {
   int count;
-  ListItem({required this.count});
+  String title;
+  DateTime date;
+  ListItem({required this.count, required this.title, required this.date});
 
   @override
   Widget build(BuildContext context) {
-    final item = Provider.of<ItemProvider>(context).items;
     return Padding(
       padding: const EdgeInsets.all(11.0),
       child: Container(
@@ -34,13 +36,14 @@ class ListItem extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: ListTile(
           title: Text(
-            item[count].title,
+            title,
           ),
           leading: Text(
-            '${item[count].id}.',
+            '${count}.',
           ),
           subtitle: Text(
-            'Status',
+            'Date Added: ${DateFormat.yMMMd().format(date)}',
+            style: TextStyle(fontSize: 17),
           ),
         ),
       ),
