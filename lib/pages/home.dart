@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime? _setDate;
+  DateTime _setDate = DateTime.now();
 
   TextEditingController taskname = TextEditingController();
   final List<Item> _items = [
@@ -41,25 +41,30 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<ItemProvider>().watchAll();
+    //context.watch<ItemProvider>().watchAll();
     return Scaffold(
       appBar: AppBar(
         title: const Text('To-do List'),
       ),
       body: Consumer<ItemProvider>(
         builder: (context, value, child) {
-          return ListView.builder(
-            itemCount: value.savedList.length,
-            itemBuilder: (context, index) {
-              int count = index + 1;
+          return value.savedList.isEmpty
+              ? ListView.builder(
+                  itemCount: value.savedList.length,
+                  itemBuilder: (context, index) {
+                    int count = index + 1;
 
-              return ListItem(
-                count: count,
-                title: value.savedList[index].name.toString(),
-                //date: _items[index].date,
-              );
-            },
-          );
+                    return ListItem(
+                      count: count,
+                      title: value.savedList[index].name.toString(),
+                      // delete: value.delete(value.savedList[index]),
+                      date: value.savedList[index].date.toString(),
+                    );
+                  },
+                )
+              : Center(
+                  child: Text('No Tasks'),
+                );
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -88,35 +93,34 @@ class _HomePageState extends State<HomePage> {
                             focusColor: Colors.blueGrey),
                       ),
                     ),
-                    Row(
-                      children: [
-                        Text(
-                          'Due date: ',
-                          style: TextStyle(color: Colors.lightGreenAccent[700]),
-                        ),
-                        TextButton(
-                          child: Text(
-                            _setDate == null
-                                ? 'Date shows here.'
-                                : DateFormat.yMMMd().format(_setDate!),
-                            style:
-                                TextStyle(color: Colors.lightGreenAccent[700]),
-                          ),
-                          onPressed: () {
-                            showDatePicker(
-                              context: context,
-                              initialDate: DateTime.now(),
-                              firstDate: DateTime(2022),
-                              lastDate: DateTime(2027),
-                            ).then((value) {
-                              setState(() {
-                                _setDate = value!;
-                              });
-                            });
-                          },
-                        ),
-                      ],
-                    ),
+                    // Row(
+                    //   children: [
+                    //     Text(
+                    //       'Due date: ',
+                    //       style: TextStyle(color: Colors.lightGreenAccent[700]),
+                    //     ),
+                    //     TextButton(
+                    //       child: Text(
+                    //         _setDate == null
+                    //             ? 'Date shows here.'
+                    //             : DateFormat.yMMMd().format(_setDate!),
+                    //         style:
+                    //             TextStyle(color: Colors.lightGreenAccent[700]),
+                    //       ),
+                    //       onPressed: () {
+                    //         showDatePicker(
+                    //           context: context,
+                    //           initialDate: DateTime.now(),
+                    //           firstDate: DateTime(2022),
+                    //           lastDate: DateTime(2027),
+                    //         ).then((value) {
+                    //           _setDate = value!;
+                    //           setState(() {});
+                    //         });
+                    //       },
+                    //     ),
+                    //   ],
+                    // ),
                     Center(
                       child: OutlinedButton(
                         child: Text(
@@ -127,7 +131,10 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         onPressed: () {
-                          value.addTask(taskname.text);
+                          value.addTask(taskname.text,
+                              DateFormat.yMMMd().format(_setDate));
+                          print(value.savedList.length);
+                          setState(() {});
                         },
                       ),
                     )

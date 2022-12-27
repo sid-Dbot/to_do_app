@@ -85,7 +85,7 @@ class _$AppDatabase extends AppDatabase {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `NewModel` (`id` INTEGER, `name` TEXT, PRIMARY KEY (`id`))');
+            'CREATE TABLE IF NOT EXISTS `NewModel` (`id` INTEGER, `name` TEXT, `date` TEXT, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -107,22 +107,31 @@ class _$ItemDAO extends ItemDAO {
         _newModelInsertionAdapter = InsertionAdapter(
             database,
             'NewModel',
-            (NewModel item) =>
-                <String, Object?>{'id': item.id, 'name': item.name},
+            (NewModel item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'date': item.date
+                },
             changeListener),
         _newModelUpdateAdapter = UpdateAdapter(
             database,
             'NewModel',
             ['id'],
-            (NewModel item) =>
-                <String, Object?>{'id': item.id, 'name': item.name},
+            (NewModel item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'date': item.date
+                },
             changeListener),
         _newModelDeletionAdapter = DeletionAdapter(
             database,
             'NewModel',
             ['id'],
-            (NewModel item) =>
-                <String, Object?>{'id': item.id, 'name': item.name},
+            (NewModel item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'date': item.date
+                },
             changeListener);
 
   final sqflite.DatabaseExecutor database;
@@ -140,15 +149,19 @@ class _$ItemDAO extends ItemDAO {
   @override
   Future<List<NewModel>> findallItems() async {
     return _queryAdapter.queryList('SELECT * FROM NewModel',
-        mapper: (Map<String, Object?> row) =>
-            NewModel(id: row['id'] as int?, name: row['name'] as String?));
+        mapper: (Map<String, Object?> row) => NewModel(
+            id: row['id'] as int?,
+            name: row['name'] as String?,
+            date: row['date'] as String?));
   }
 
   @override
   Stream<List<NewModel>> watchall() {
     return _queryAdapter.queryListStream('SELECT * FROM NewModel',
-        mapper: (Map<String, Object?> row) =>
-            NewModel(id: row['id'] as int?, name: row['name'] as String?),
+        mapper: (Map<String, Object?> row) => NewModel(
+            id: row['id'] as int?,
+            name: row['name'] as String?,
+            date: row['date'] as String?),
         queryableName: 'NewModel',
         isView: false);
   }

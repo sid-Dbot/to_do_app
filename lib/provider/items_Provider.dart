@@ -8,12 +8,12 @@ import 'package:to_do_app/repo/save_repo.dart';
 import '../models/item.dart';
 
 class ItemProvider with ChangeNotifier {
-  late SaveRepo savedRepo;
+  late SavedRepo savedRepo;
 
   List<NewModel> savedList = [];
 
   ItemProvider() {
-    savedRepo = GetIt.instance.get<SaveRepo>();
+    savedRepo = GetIt.instance.get<SavedRepo>();
     watchAll();
   }
 
@@ -24,13 +24,13 @@ class ItemProvider with ChangeNotifier {
     });
   }
 
-  Future<void> addTask(String name) async {
-    var newSavedList = NewModel(name: name);
+  Future<void> addTask(String name, String date) async {
+    var newSavedList = NewModel(name: name, date: date);
     await savedRepo.insertALl(newSavedList);
   }
 
-  Future<void> update(String name, int id) async {
-    var newSavedList = NewModel(name: name, id: id);
+  Future<void> update(String name, String date, int id) async {
+    var newSavedList = NewModel(name: name, id: id, date: date);
     await savedRepo.update(newSavedList);
   }
 

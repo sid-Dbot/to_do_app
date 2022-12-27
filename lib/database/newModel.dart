@@ -5,5 +5,6 @@ class NewModel {
   @primaryKey
   int? id;
   String? name;
-  NewModel({this.id, required this.name});
+  String? date;
+  NewModel({this.id, required this.name, required this.date});
 }

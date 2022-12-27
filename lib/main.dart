@@ -13,12 +13,12 @@ void main() {
   GetIt getIt = GetIt.instance;
 
   getIt.registerSingletonAsync<AppDatabase>(
-      () async => $FloorAppDatabase.databaseBuilder('task.db').build());
+      () async => $FloorAppDatabase.databaseBuilder("task.db").build());
   getIt.registerSingletonWithDependencies(() {
     return GetIt.instance.get<AppDatabase>().itemDAO;
   }, dependsOn: [AppDatabase]);
-  getIt.registerSingletonWithDependencies<SaveRepo>(() {
-    return SaveRepo();
+  getIt.registerSingletonWithDependencies<SavedRepo>(() {
+    return SavedRepo();
   }, dependsOn: [AppDatabase, ItemDAO]);
 
   runApp(MainApp());
@@ -69,12 +69,12 @@ class MainApp extends StatelessWidget {
         darkTheme: ThemeData.dark(),
         home: FutureBuilder(
           future: GetIt.instance.allReady(),
-          builder: (context, AsyncSnapshot snapshot) {
+          builder: (context, snapshot) {
             return snapshot.hasData
                 ? HomePage()
                 : Scaffold(
                     body: Center(
-                      child: Text('noData'),
+                      child: CircularProgressIndicator(),
                     ),
                   );
           },

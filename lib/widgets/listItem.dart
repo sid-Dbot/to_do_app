@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class ListItem extends StatelessWidget {
   int count;
   String title;
-  //DateTime date;
+  //void delete;
+  String date;
   ListItem({
     required this.count,
     required this.title,
-    // required this.date,
+    //required this.delete,
+    required this.date,
   });
 
   @override
@@ -39,10 +41,16 @@ class ListItem extends StatelessWidget {
           leading: Text(
             '${count}.',
           ),
-          // subtitle: Text(
-          //   'Date Added: ${DateFormat.yMMMd().format(date)}',
-          //   style: TextStyle(fontSize: 17),
-          // ),
+          subtitle: Text(
+            'Date Added: ${date}',
+            style: TextStyle(fontSize: 17),
+          ),
+          trailing: IconButton(
+            icon: Icon(Icons.delete_forever),
+            onPressed: () {
+              //delete;
+            },
+          ),
         ),
       ),
     );

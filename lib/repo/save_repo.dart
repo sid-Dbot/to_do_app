@@ -2,10 +2,10 @@ import 'package:get_it/get_it.dart';
 import 'package:to_do_app/database/DAO.dart';
 import 'package:to_do_app/database/newModel.dart';
 
-class SaveRepo {
+class SavedRepo {
   late ItemDAO itemDAO;
 
-  savedrepo() {
+  SavedRepo() {
     itemDAO = GetIt.instance.get<ItemDAO>();
   }
 
