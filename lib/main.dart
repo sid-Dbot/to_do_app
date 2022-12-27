@@ -13,7 +13,7 @@ void main() {
   GetIt getIt = GetIt.instance;
 
   getIt.registerSingletonAsync<AppDatabase>(
-      () async => $FloorAppDatabase.databaseBuilder("task.db").build());
+      () async => $FloorAppDatabase.databaseBuilder("newtask.db").build());
   getIt.registerSingletonWithDependencies(() {
     return GetIt.instance.get<AppDatabase>().itemDAO;
   }, dependsOn: [AppDatabase]);

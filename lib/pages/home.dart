@@ -41,7 +41,7 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //context.watch<ItemProvider>().watchAll();
+    context.watch<ItemProvider>().watchAll();
     return Scaffold(
       appBar: AppBar(
         title: const Text('To-do List'),
@@ -49,21 +49,24 @@ class _HomePageState extends State<HomePage> {
       body: Consumer<ItemProvider>(
         builder: (context, value, child) {
           return value.savedList.isEmpty
-              ? ListView.builder(
+              ? Center(
+                  child: Text('No Tasks'),
+                )
+              : ListView.builder(
                   itemCount: value.savedList.length,
                   itemBuilder: (context, index) {
                     int count = index + 1;
+                    final del = value.delete(value.savedList[index]);
 
                     return ListItem(
                       count: count,
                       title: value.savedList[index].name.toString(),
-                      // delete: value.delete(value.savedList[index]),
+                      delete: del.whenComplete(() {
+                        setState(() {});
+                      }),
                       date: value.savedList[index].date.toString(),
                     );
                   },
-                )
-              : Center(
-                  child: Text('No Tasks'),
                 );
         },
       ),
@@ -132,9 +135,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                         onPressed: () {
                           value.addTask(taskname.text,
-                              DateFormat.yMMMd().format(_setDate));
-                          print(value.savedList.length);
-                          setState(() {});
+                              DateFormat.yMMMd().format(_setDate).toString());
                         },
                       ),
                     )

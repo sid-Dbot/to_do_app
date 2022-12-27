@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class ListItem extends StatelessWidget {
   int count;
   String title;
-  //void delete;
+  Future delete;
   String date;
   ListItem({
     required this.count,
     required this.title,
-    //required this.delete,
+    required this.delete,
     required this.date,
   });
 
@@ -39,16 +39,16 @@ class ListItem extends StatelessWidget {
             title,
           ),
           leading: Text(
-            '${count}.',
+            '$count.',
           ),
           subtitle: Text(
-            'Date Added: ${date}',
+            'Date Added: $date',
             style: TextStyle(fontSize: 17),
           ),
           trailing: IconButton(
             icon: Icon(Icons.delete_forever),
             onPressed: () {
-              //delete;
+              delete;
             },
           ),
         ),
