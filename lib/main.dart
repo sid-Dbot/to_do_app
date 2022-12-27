@@ -67,7 +67,18 @@ class MainApp extends StatelessWidget {
               ),
             )),
         darkTheme: ThemeData.dark(),
-        home: HomePage(),
+        home: FutureBuilder(
+          future: GetIt.instance.allReady(),
+          builder: (context, AsyncSnapshot snapshot) {
+            return snapshot.hasData
+                ? HomePage()
+                : Scaffold(
+                    body: Center(
+                      child: Text('noData'),
+                    ),
+                  );
+          },
+        ),
       ),
     );
   }

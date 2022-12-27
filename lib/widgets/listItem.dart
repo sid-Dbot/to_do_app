@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:intl/intl.dart';
-import 'package:provider/provider.dart';
-
-import 'package:to_do_app/models/item.dart';
-import 'package:to_do_app/provider/items_Provider.dart';
 
 class ListItem extends StatelessWidget {
   int count;
   String title;
-  DateTime date;
-  ListItem({required this.count, required this.title, required this.date});
+  //DateTime date;
+  ListItem({
+    required this.count,
+    required this.title,
+    // required this.date,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +39,10 @@ class ListItem extends StatelessWidget {
           leading: Text(
             '${count}.',
           ),
-          subtitle: Text(
-            'Date Added: ${DateFormat.yMMMd().format(date)}',
-            style: TextStyle(fontSize: 17),
-          ),
+          // subtitle: Text(
+          //   'Date Added: ${DateFormat.yMMMd().format(date)}',
+          //   style: TextStyle(fontSize: 17),
+          // ),
         ),
       ),
     );
