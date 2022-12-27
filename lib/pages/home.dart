@@ -56,14 +56,10 @@ class _HomePageState extends State<HomePage> {
                   itemCount: value.savedList.length,
                   itemBuilder: (context, index) {
                     int count = index + 1;
-                    final del = value.delete(value.savedList[index]);
 
                     return ListItem(
                       count: count,
                       title: value.savedList[index].name.toString(),
-                      delete: del.whenComplete(() {
-                        setState(() {});
-                      }),
                       date: value.savedList[index].date.toString(),
                     );
                   },

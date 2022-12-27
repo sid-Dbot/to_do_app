@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 
-class ListItem extends StatelessWidget {
+class ListItem extends StatefulWidget {
   int count;
   String title;
-  Future delete;
+
   String date;
   ListItem({
     required this.count,
     required this.title,
-    required this.delete,
     required this.date,
   });
 
+  @override
+  State<ListItem> createState() => _ListItemState();
+}
+
+class _ListItemState extends State<ListItem> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -36,20 +40,18 @@ class ListItem extends StatelessWidget {
         padding: const EdgeInsets.all(8),
         child: ListTile(
           title: Text(
-            title,
+            widget.title,
           ),
           leading: Text(
-            '$count.',
+            '${widget.count}.',
           ),
           subtitle: Text(
-            'Date Added: $date',
+            'Date Added: ${widget.date}',
             style: TextStyle(fontSize: 17),
           ),
           trailing: IconButton(
             icon: Icon(Icons.delete_forever),
-            onPressed: () {
-              delete;
-            },
+            onPressed: () {},
           ),
         ),
       ),
